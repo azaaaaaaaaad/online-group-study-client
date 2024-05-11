@@ -1,22 +1,34 @@
-// Import Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react';
 
-// Import Swiper styles
-import 'swiper/css';
+import b1 from '../assets/images/b1.webp'
+import b2 from '../assets/images/b2.jpg'
+import b3 from '../assets/images/b3.jpg'
+
 
 const Banner = () => {
     return (
-        <Swiper
-            spaceBetween={50}
-            slidesPerView={3}
-            onSlideChange={() => console.log('slide change')}
-            onSwiper={(swiper) => console.log(swiper)}
-        >
-            <SwiperSlide>Slide 1</SwiperSlide>
-            <SwiperSlide>Slide 2</SwiperSlide>
-            <SwiperSlide>Slide 3</SwiperSlide>
-            <SwiperSlide>Slide 4</SwiperSlide>
-        </Swiper>
+        <div className="carousel w-full">
+            <div id="slide1" className="carousel-item relative w-full">
+                <img src={b1} className="w-full" />
+                <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                    <a href="#slide4" className="btn btn-circle">❮</a>
+                    <a href="#slide2" className="btn btn-circle">❯</a>
+                </div>
+            </div>
+            <div id="slide2" className="carousel-item relative w-full">
+                <img src={b2} className="w-full" />
+                <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                    <a href="#slide1" className="btn btn-circle">❮</a>
+                    <a href="#slide3" className="btn btn-circle">❯</a>
+                </div>
+            </div>
+            <div id="slide3" className="carousel-item relative w-full">
+                <img src={b3} className="w-full" />
+                <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                    <a href="#slide2" className="btn btn-circle">❮</a>
+                    <a href="#slide4" className="btn btn-circle">❯</a>
+                </div>
+            </div>
+        </div>
     );
 };
 
