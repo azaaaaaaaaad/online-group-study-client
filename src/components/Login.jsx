@@ -3,9 +3,9 @@ import image from '../assets/images/logo.png'
 
 const Login = () => {
 
-    const handleSubmit = event => {
-        event.preventDefault();
-        const form = event.target;
+    const handleLogin = e => {
+        e.preventDefault();
+        const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
         const info = { email, password }
@@ -34,7 +34,9 @@ const Login = () => {
                         Welcome back!
                     </p>
 
-                    <div className='flex cursor-pointer items-center justify-center mt-4 text-gray-600 transition-colors duration-300 transform border rounded-lg   hover:bg-gray-50 '>
+                    <div
+                    //  onClick={}
+                      className='flex cursor-pointer items-center justify-center mt-4 text-gray-600 transition-colors duration-300 transform border rounded-lg   hover:bg-gray-50 '>
                         <div className='px-4 py-2'>
                             <svg className='w-6 h-6' viewBox='0 0 40 40'>
                                 <path
@@ -72,7 +74,7 @@ const Login = () => {
                     </div>
 
                     {/* form */}
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleLogin}>
                         <div className='mt-4'>
                             <label
                                 className='block mb-2 text-sm font-medium text-gray-600 '

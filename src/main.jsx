@@ -9,6 +9,9 @@ import Root from './components/Root';
 import Login from './components/Login';
 import Register from './components/Register';
 import Error from './components/Error';
+import Assignments from './components/Assignments';
+import AuthProvider from './provider/AuthProvider';
+import Home from './homepage/Home';
 
 const router = createBrowserRouter([
   {
@@ -16,6 +19,14 @@ const router = createBrowserRouter([
     element: <Root></Root>,
     errorElement: <Error></Error>,
     children: [
+      {
+        path: '/',
+        element: <Home></Home>,
+      },
+      {
+        path: '/assignments',
+        element: <Assignments></Assignments>,
+      },
       {
         path: '/login',
         element: <Login></Login>,
@@ -29,7 +40,11 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
+  <React.StrictMode >
+    <div className='font-briem'>
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
+    </div>
   </React.StrictMode>,
 )
