@@ -22,14 +22,25 @@ const Login = () => {
 
     //email pass
 
-    const handleLogin = e => {
+    const handleSignin = async e => {
         e.preventDefault();
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
         const info = { email, password }
         console.log(info)
+        try {
+            const result = await signIn(email, password)
+            console.log(result)
+            navigate('/')
+            toast.success('sign in successful')
+        } catch (error) {
+            console.log(error);
+            toast.error(error?.message)
+        }
     }
+
+
     return (
         <div className='flex justify-center items-center min-h-[calc(100vh-306px)]'>
             <div className='flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg  lg:max-w-4xl '>
@@ -93,7 +104,7 @@ const Login = () => {
                     </div>
 
                     {/* form */}
-                    <form onSubmit={handleLogin}>
+                    <form onSubmit={handleSignin}>
                         <div className='mt-4'>
                             <label
                                 className='block mb-2 text-sm font-medium text-gray-600 '
@@ -155,5 +166,6 @@ const Login = () => {
         </div>
     )
 }
+
 
 export default Login
