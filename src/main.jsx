@@ -12,6 +12,7 @@ import Error from './components/Error';
 import Assignments from './components/Assignments';
 import AuthProvider from './provider/AuthProvider';
 import Home from './homepage/Home';
+import { Toaster } from 'react-hot-toast';
 
 const router = createBrowserRouter([
   {
@@ -45,6 +46,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <AuthProvider>
         <RouterProvider router={router} />
       </AuthProvider>
+      <Toaster></Toaster>
     </div>
   </React.StrictMode>,
 )

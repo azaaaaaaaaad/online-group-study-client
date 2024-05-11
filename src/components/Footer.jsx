@@ -3,7 +3,7 @@ const Footer = () => {
   return (
     <footer className='bg-white shadow-sm'>
       <hr />
-      <div className=' px-6 py-8 mx-auto'>
+      <div className='  py-8 mx-auto'>
         <div className='flex flex-col items-center text-center'>
           <div className='flex gap-2 items-center'>
             <img className='w-auto h-7' src={logo} alt='' />
