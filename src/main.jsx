@@ -8,11 +8,13 @@ import {
 import Root from './components/Root';
 import Login from './components/Login';
 import Register from './components/Register';
+import Error from './components/Error';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
+    errorElement: <Error></Error>,
     children: [
       {
         path: '/login',
