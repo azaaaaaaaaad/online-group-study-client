@@ -5,9 +5,13 @@ import Footer from "./Footer";
 const Root = () => {
     return (
         <div>
-            <Navbar></Navbar>
+            <div className="mb-6">
+                <Navbar></Navbar>
+            </div>
             <Outlet></Outlet>
-            <Footer></Footer>
+            <div className="mt-6">
+                <Footer></Footer>
+            </div>
         </div>
     );
 };

@@ -9,11 +9,13 @@ import Root from './components/Root';
 import Login from './components/Login';
 import Register from './components/Register';
 import Error from './components/Error';
-import Assignments from './components/Assignments';
-import AuthProvider from './provider/AuthProvider';
+import Assignments from './Assignment Page/Assignments';
+import AuthProvider from '../src/provider/AuthProvider';
 import Home from './homepage/Home';
 import { Toaster } from 'react-hot-toast';
 import CreateAssignment from '../src/create assignment/CreateAssignment';
+import PrivateRoute from '../src/components/PrivateRoute';
+import AssignmentDetails from './Assignment Page/AssignmentDetails';
 
 const router = createBrowserRouter([
   {
@@ -30,6 +32,11 @@ const router = createBrowserRouter([
         element: <Assignments></Assignments>,
       },
       {
+        path: '/assignments/:id',
+        element: <AssignmentDetails></AssignmentDetails>,
+        loader: ({ params }) => fetch(`http://localhost:5000/assignments/${params.id}`)
+      },
+      {
         path: '/login',
         element: <Login></Login>,
       },
@@ -39,7 +46,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/create-assignment',
-        element: <CreateAssignment></CreateAssignment>,
+        element:
+          <PrivateRoute>
+            <CreateAssignment></CreateAssignment>
+          </PrivateRoute>,
+
       },
     ]
   },
