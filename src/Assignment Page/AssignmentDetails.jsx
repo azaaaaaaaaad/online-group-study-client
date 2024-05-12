@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 
 const AssignmentDetails = () => {
@@ -14,9 +14,9 @@ const AssignmentDetails = () => {
                     <p>Difficulty: {difficultyLevel}</p>
                     <p>Description: {description}</p>
                     <p>Deadline: {date}</p>
-                    {/* <div className="card-actions justify-end">
-                    <button className="btn btn-primary">Watch</button>
-                </div> */}
+                    <Link to={'/assignments'} className="card-actions justify-end">
+                        <button className="btn btn-active btn-block">Back In Assignments</button>
+                    </Link>
                 </div>
             </div>
         </div>

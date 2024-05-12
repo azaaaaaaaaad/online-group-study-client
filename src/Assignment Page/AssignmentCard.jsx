@@ -1,9 +1,12 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 
-const AssignmentCard = ({ assignment }) => {
+
+const AssignmentCard = ({ assignment, handleDelete }) => {
 
     const { _id, title, description, marks, photo, difficultyLevel, date } = assignment;
+
     return (
         <div className="card w-96 bg-base-100 shadow-xl">
             <figure className="px-10 pt-10">
@@ -16,8 +19,8 @@ const AssignmentCard = ({ assignment }) => {
                 <div className="card-actions">
                     <div className="join">
                         <Link to={`/assignments/${_id}`}><button className="btn join-item">View</button></Link>
-                        <Link><button className="btn join-item">Update</button></Link>
-                        <Link><button className="btn join-item">Delete</button></Link>
+                        <button className="btn join-item">Update</button>
+                        <button onClick={() => handleDelete(_id)} className="btn join-item">Delete</button>
                     </div>
                 </div>
             </div>
