@@ -13,7 +13,7 @@ const Home = () => {
                 <h2 className="text-2xl font-bold text-center mt-6 mb-6">Features</h2>
                 <Features features={features}></Features>
             </div>
-            <div>
+            <div className="container mx-auto mb-6">
             <h2 className="text-2xl font-bold text-center mt-6 mb-6">Frequently Asked Questions</h2>
                 <FAQ></FAQ>
             </div>

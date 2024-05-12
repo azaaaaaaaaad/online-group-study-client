@@ -13,6 +13,7 @@ import Assignments from './components/Assignments';
 import AuthProvider from './provider/AuthProvider';
 import Home from './homepage/Home';
 import { Toaster } from 'react-hot-toast';
+import CreateAssignment from '../src/create assignment/CreateAssignment';
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: '/register',
         element: <Register></Register>,
+      },
+      {
+        path: '/create-assignment',
+        element: <CreateAssignment></CreateAssignment>,
       },
     ]
   },

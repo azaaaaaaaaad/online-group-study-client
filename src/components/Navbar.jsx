@@ -19,12 +19,12 @@ const Navbar = () => {
                     </li>
                     {user && (
                         <li>
-                            <Link to='/create-assignments'>Create Assignments</Link>
+                            <Link to='/create-assignment'>Create Assignments</Link>
                         </li>
                     )}
                     {user && (
                         <li>
-                            <Link to='/pending-assignments'>Pending Assignments</Link>
+                            <Link to='/pending-assignment'>Pending Assignments</Link>
                         </li>
                     )}
                     {
