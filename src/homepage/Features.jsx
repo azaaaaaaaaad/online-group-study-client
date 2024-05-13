@@ -7,7 +7,7 @@ const Features = () => {
     const [features, setFeatures] = useState([])
     useEffect(() => {
         const getData = async () => {
-            const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/feature`)
+            const { data } = await axios.get(`https://group-study-server-henna.vercel.app/feature`)
             setFeatures(data)
         }
         getData()

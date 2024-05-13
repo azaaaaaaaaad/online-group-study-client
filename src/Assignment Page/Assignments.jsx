@@ -8,7 +8,7 @@ const Assignments = () => {
     const [assignments, setAssignments] = useState([])
     useEffect(() => {
         const getData = async () => {
-            const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/assignments`)
+            const { data } = await axios.get(`https://group-study-server-henna.vercel.app/assignments`)
             setAssignments(data)
         }
         getData()
@@ -25,7 +25,7 @@ const Assignments = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`${import.meta.env.VITE_API_URL}/assignments/${id}`, {
+                fetch(`https://group-study-server-henna.vercel.app/assignments/${id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

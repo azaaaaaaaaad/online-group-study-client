@@ -1,10 +1,12 @@
-import { useState } from "react";
+
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../provider/AuthProvider";
 
 
 
 const AssignmentCard = ({ assignment, handleDelete }) => {
-
+    const {user} = useContext(AuthContext)
     const { _id, title, description, marks, photo, difficultyLevel, date } = assignment;
 
     return (
@@ -22,7 +24,9 @@ const AssignmentCard = ({ assignment, handleDelete }) => {
                         <Link to={`/assignments-update/${_id}`}>
                             <button className="btn join-item">Update</button>
                         </Link>
-                        <button onClick={() => handleDelete(_id)} className="btn join-item">Delete</button>
+                        {
+                            user && <button onClick={() => handleDelete(_id)} className="btn join-item">Delete</button>
+                        }
                     </div>
                 </div>
             </div>

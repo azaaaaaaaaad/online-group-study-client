@@ -1,7 +1,10 @@
+import { useContext } from "react";
 import { Link, useLoaderData } from "react-router-dom";
+import { AuthContext } from "../provider/AuthProvider";
 
 
 const AssignmentDetails = () => {
+    const { user } = useContext(AuthContext)
     const assignment = useLoaderData();
     const { _id, title, description, marks, photo, difficultyLevel, date } = assignment;
     return (
@@ -14,9 +17,12 @@ const AssignmentDetails = () => {
                     <p>Difficulty: {difficultyLevel}</p>
                     <p>Description: {description}</p>
                     <p>Deadline: {date}</p>
-                    <Link to={'/assignments'} className="card-actions justify-end">
-                        <button className="btn btn-active btn-block">Back In Assignments</button>
-                    </Link>
+                    {
+                        user &&
+                        <Link to={`/assignment-submit/${_id}`} className="card-actions justify-end">
+                            <button className="btn btn-active btn-block">Take Assignment</button>
+                        </Link>
+                    }
                 </div>
             </div>
         </div>

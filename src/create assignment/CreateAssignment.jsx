@@ -1,10 +1,12 @@
 import axios from "axios";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import toast from "react-hot-toast";
+import { AuthContext } from "../provider/AuthProvider";
 
 const CreateAssignment = () => {
+    const { user } = useContext(AuthContext)
     const [startDate, setStartDate] = useState(new Date());
 
     const handleForm = async e => {
@@ -16,11 +18,12 @@ const CreateAssignment = () => {
         const photo = form.photo.value;
         const difficultyLevel = form.difficultyLevel.value;
         const date = startDate
-        const info = { title, description, marks, photo, difficultyLevel, date }
-        console.table(info);
+        const email = form.email.value;
+        const info = { title, description, marks, photo, difficultyLevel, date, email }
+        console.log(info);
 
         try {
-            const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/assignments`, info)
+            const { data } = await axios.post(`https://group-study-server-henna.vercel.app/assignments`, info)
             console.log(data);
             toast.success('assignment created successfully')
         } catch (error) {
@@ -62,6 +65,10 @@ const CreateAssignment = () => {
                     <div>
                         <label>Due Date:</label>
                         <DatePicker className='border p-2 rounded-md' selected={startDate} onChange={(date) => setStartDate(date)} />
+                    </div>
+                    <div>
+                        <label>User Email:</label>
+                        <input className='border p-2 rounded-md' defaultValue={user?.email} type="text" name="email" required />
                     </div>
                     <button className='btn btn-active' type="submit">Submit</button>
                 </div>

@@ -1,12 +1,13 @@
 import { useLoaderData } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import axios from "axios";
 import toast from "react-hot-toast";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../provider/AuthProvider";
 
 
 const AssignmentUpdate = () => {
+    const { user } = useContext(AuthContext)
     const loadedAssignment = useLoaderData();
     const { title, description, marks, photo, difficultyLevel, date } = loadedAssignment
     const [startDate, setStartDate] = useState(new Date());
@@ -20,10 +21,10 @@ const AssignmentUpdate = () => {
         const photo = form.photo.value;
         const difficultyLevel = form.difficultyLevel.value;
         const date = startDate
-        const info = { title, description, marks, photo, difficultyLevel, date }
-        console.log(info);
+        const email = form.email.value;
+        const info = { title, description, marks, photo, difficultyLevel, date, email }
 
-        fetch(`${import.meta.env.VITE_API_URL}/assignments/${loadedAssignment._id}`, {
+        fetch(`https://group-study-server-henna.vercel.app/assignments/${loadedAssignment._id}`, {
             method: "PUT",
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(info)
@@ -71,6 +72,10 @@ const AssignmentUpdate = () => {
                     <div>
                         <label>Due Date:</label>
                         <DatePicker className='border p-2 rounded-md' selected={date} onChange={(date) => setStartDate(date)} />
+                    </div>
+                    <div>
+                        <label>User Email:</label>
+                        <input className='border p-2 rounded-md' defaultValue={user?.email} type="text" name="email" required />
                     </div>
                     <button className='btn btn-active' type="submit">Update</button>
                 </div>

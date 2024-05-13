@@ -17,6 +17,8 @@ import CreateAssignment from '../src/create assignment/CreateAssignment';
 import PrivateRoute from '../src/components/PrivateRoute';
 import AssignmentDetails from './Assignment Page/AssignmentDetails';
 import AssignmentUpdate from './Assignment Page/AssignmentUpdate';
+import AssignmentSubmit from './Assignment Page/AssignmentSubmit';
+import MyAttemptedAssignments from './My Attempted Assignments/MyAttemptedAssignments';
 
 const router = createBrowserRouter([
   {
@@ -34,15 +36,21 @@ const router = createBrowserRouter([
       },
       {
         path: '/assignments/:id',
-        element: <AssignmentDetails></AssignmentDetails>,
-        loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/assignments/${params.id}`)
-        
+        element: <PrivateRoute>
+          <AssignmentDetails></AssignmentDetails>
+        </PrivateRoute>,
+        loader: ({ params }) => fetch(`https://group-study-server-henna.vercel.app/assignments/${params.id}`)
+
       },
       {
         path: '/assignments-update/:id',
         element: <AssignmentUpdate></AssignmentUpdate>,
-        loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/assignments/${params.id}`)
-        
+        loader: ({ params }) => fetch(`https://group-study-server-henna.vercel.app/assignments/${params.id}`),
+      },
+      {
+        path: '/assignment-submit/:id',
+        element: <AssignmentSubmit></AssignmentSubmit>,
+        loader: ({ params }) => fetch(`https://group-study-server-henna.vercel.app/assignments/${params.id}`)
       },
       {
         path: '/login',
@@ -58,8 +66,13 @@ const router = createBrowserRouter([
           <PrivateRoute>
             <CreateAssignment></CreateAssignment>
           </PrivateRoute>,
-
       },
+      {
+        path: '/my-attempted-assignments',
+        element: <PrivateRoute>
+          <MyAttemptedAssignments></MyAttemptedAssignments>
+        </PrivateRoute>,
+      }
     ]
   },
 ]);

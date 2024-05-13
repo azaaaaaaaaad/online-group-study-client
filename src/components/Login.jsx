@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 import image from '../assets/images/logo.png'
 import { useContext } from "react"
 import { AuthContext } from "../provider/AuthProvider"
@@ -6,6 +6,8 @@ import toast from "react-hot-toast"
 
 const Login = () => {
     const navigate = useNavigate()
+    const location = useLocation();
+    const from = location?.state || '/'
     const { signIn, signInWithGoogle, } = useContext(AuthContext)
 
     //google sign in
@@ -13,7 +15,7 @@ const Login = () => {
         try {
             await signInWithGoogle()
             toast.success('sign in successful')
-            navigate('/')
+            navigate(from)
         } catch (error) {
             console.log(error);
             toast.error(error?.message)
@@ -64,17 +66,6 @@ const Login = () => {
                         Welcome back!
                     </p>
 
-                    {/* <div className='flex items-center justify-between mt-4'>
-                        <span className='w-1/5 border-b  lg:w-1/4'></span>
-
-                        <div className='text-xs text-center text-gray-500 uppercase  hover:underline'>
-                            or login with email
-                        </div>
-
-                        <span className='w-1/5 border-b dark:border-gray-400 lg:w-1/4'></span>
-                    </div> */}
-
-                    {/* form */}
                     <form onSubmit={handleSignin}>
                         <div className='mt-4'>
                             <label
