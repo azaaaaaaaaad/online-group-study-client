@@ -33,7 +33,7 @@ const Assignments = () => {
                         if (data.deletedCount > 0) {
                             Swal.fire(
                                 'Deleted!',
-                                'Your Coffee has been deleted.',
+                                'Assignment has been deleted.',
                                 'success'
                             );
                             const remaining = assignments.filter(assignment=> assignment._id !== id)

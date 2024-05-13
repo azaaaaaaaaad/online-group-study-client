@@ -19,7 +19,9 @@ const AssignmentCard = ({ assignment, handleDelete }) => {
                 <div className="card-actions">
                     <div className="join">
                         <Link to={`/assignments/${_id}`}><button className="btn join-item">View</button></Link>
-                        <button className="btn join-item">Update</button>
+                        <Link to={`/assignments-update/${_id}`}>
+                            <button className="btn join-item">Update</button>
+                        </Link>
                         <button onClick={() => handleDelete(_id)} className="btn join-item">Delete</button>
                     </div>
                 </div>

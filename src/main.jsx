@@ -16,6 +16,7 @@ import { Toaster } from 'react-hot-toast';
 import CreateAssignment from '../src/create assignment/CreateAssignment';
 import PrivateRoute from '../src/components/PrivateRoute';
 import AssignmentDetails from './Assignment Page/AssignmentDetails';
+import AssignmentUpdate from './Assignment Page/AssignmentUpdate';
 
 const router = createBrowserRouter([
   {
@@ -35,7 +36,13 @@ const router = createBrowserRouter([
         path: '/assignments/:id',
         element: <AssignmentDetails></AssignmentDetails>,
         loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/assignments/${params.id}`)
-        // loader: ({ params }) => fetch(`http://localhost:5000/assignments/${params.id}`)
+        
+      },
+      {
+        path: '/assignments-update/:id',
+        element: <AssignmentUpdate></AssignmentUpdate>,
+        loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/assignments/${params.id}`)
+        
       },
       {
         path: '/login',
