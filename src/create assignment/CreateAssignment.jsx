@@ -4,9 +4,11 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import toast from "react-hot-toast";
 import { AuthContext } from "../provider/AuthProvider";
+import { useNavigate } from "react-router-dom";
 
 const CreateAssignment = () => {
     const { user } = useContext(AuthContext)
+    const navigate = useNavigate();
     const [startDate, setStartDate] = useState(new Date());
 
     const handleForm = async e => {
@@ -30,7 +32,7 @@ const CreateAssignment = () => {
         } catch (error) {
             toast.error(error?.message)
         }
-
+        navigate(`/assignments`)
         form.reset('');
     }
 

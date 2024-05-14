@@ -71,6 +71,8 @@ const Assignments = () => {
                         <AssignmentCard
                             key={assignment._id}
                             assignment={assignment}
+                            assignments={assignments}
+                            setAssignments={setAssignments}
                         // handleDelete={handleDelete}
                         ></AssignmentCard>)
                 }

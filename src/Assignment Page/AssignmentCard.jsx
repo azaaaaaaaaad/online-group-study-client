@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 
 
 
-const AssignmentCard = ({ assignment }) => {
+const AssignmentCard = ({ assignment, assignments, setAssignments }) => {
     const { user } = useContext(AuthContext)
     const { _id, title, creatorEmail, marks, photo, difficultyLevel, date } = assignment;
     const navigate = useNavigate();
@@ -29,14 +29,15 @@ const AssignmentCard = ({ assignment }) => {
                         .then(res => res.json())
                         .then(data => {
                             if (data.deletedCount > 0) {
-                                Swal.fire(
-                                    'Deleted!',
-                                    'Assignment has been deleted.',
-                                    'success'
-                                );
-                                // const remaining = assignments.filter(assignment => assignment._id !== id)
-                                // setAssignments(remaining)
-                                navigate('/')
+                                Swal.fire({
+                                    position: "center",
+                                    icon: "success",
+                                    title: "Assignment Deleted",
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+                                const remaining = assignments.filter(assignment => assignment._id !== id)
+                                setAssignments(remaining)
                             }
                         });
                 }

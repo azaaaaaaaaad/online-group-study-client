@@ -38,7 +38,7 @@ const Login = () => {
             toast.success('sign in successful')
         } catch (error) {
             console.log(error);
-            toast.error(error?.message)
+            toast.error(`Email and Password doesn't match`)
         }
     }
 

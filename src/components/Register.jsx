@@ -31,6 +31,14 @@ const Register = () => {
     const pass = form.password.value
     console.log({ email, pass, name, photo })
 
+     // Regex pattern for password validation
+     const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/;
+
+     if (!passwordPattern.test(pass)) {
+         toast.error('Password must contain at least one uppercase letter, one lowercase letter, one digit, and be at least 6 characters long.');
+         return;
+     }
+
     try {
       const result = await createUser(email, pass)
       console.log(result)
