@@ -1,10 +1,12 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import AssignmentCard from "./AssignmentCard";
 import Swal from "sweetalert2";
+import { AuthContext } from "../provider/AuthProvider";
 
 
 const Assignments = () => {
+    const { user } = useContext(AuthContext)
     const [assignments, setAssignments] = useState([])
     useEffect(() => {
         const getData = async () => {
@@ -14,35 +16,35 @@ const Assignments = () => {
         getData()
     }, [])
 
-    const handleDelete = (id) => {
-        Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                fetch(`https://group-study-server-henna.vercel.app/assignments/${id}`, {
-                    method: 'DELETE'
-                })
-                    .then(res => res.json())
-                    .then(data => {
-                        if (data.deletedCount > 0) {
-                            Swal.fire(
-                                'Deleted!',
-                                'Assignment has been deleted.',
-                                'success'
-                            );
-                            const remaining = assignments.filter(assignment=> assignment._id !== id)
-                            setAssignments(remaining)
-                        }
-                    });
-            }
-        });
-    };
+    // const handleDelete = (id) => {
+    //     Swal.fire({
+    //         title: 'Are you sure?',
+    //         text: "You won't be able to revert this!",
+    //         icon: 'warning',
+    //         showCancelButton: true,
+    //         confirmButtonColor: '#3085d6',
+    //         cancelButtonColor: '#d33',
+    //         confirmButtonText: 'Yes, delete it!'
+    //     }).then((result) => {
+    //         if (result.isConfirmed) {
+    //             fetch(`https://group-study-server-henna.vercel.app/assignments/${id}`, {
+    //                 method: 'DELETE'
+    //             })
+    //                 .then(res => res.json())
+    //                 .then(data => {
+    //                     if (data.deletedCount > 0) {
+    //                         Swal.fire(
+    //                             'Deleted!',
+    //                             'Assignment has been deleted.',
+    //                             'success'
+    //                         );
+    //                         const remaining = assignments.filter(assignment => assignment._id !== id)
+    //                         setAssignments(remaining)
+    //                     }
+    //                 });
+    //         }
+    //     });
+    // };
 
 
 
@@ -55,7 +57,7 @@ const Assignments = () => {
                         <AssignmentCard
                             key={assignment._id}
                             assignment={assignment}
-                            handleDelete={handleDelete}
+                            // handleDelete={handleDelete}
                         ></AssignmentCard>)
                 }
             </div>

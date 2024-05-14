@@ -2,23 +2,25 @@ import axios from "axios";
 import { useContext } from "react";
 import toast from "react-hot-toast";
 import { AuthContext } from "../provider/AuthProvider";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 
 
 const AssignmentSubmit = () => {
-    const {user} = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
+    const navigate = useNavigate()
     const assignment = useLoaderData();
-    const { _id } = assignment;
- 
+    const { _id, title } = assignment;
+
     const handleForm = async e => {
         e.preventDefault()
         const form = e.target;
         const assignmentId = _id;
+        const assignmentTitle = title
         const link = form.link.value;
         const note = form.note.value;
-        const email = form.email.value;
+        const email = user.email;
         const status = 'pending'
-        const info = {assignmentId, link, note, email, status }
+        const info = { assignmentId, assignmentTitle, link, note, email, status }
         console.log(info);
 
         try {
@@ -30,6 +32,7 @@ const AssignmentSubmit = () => {
         }
 
         form.reset('');
+        navigate('/pending-assignments')
     }
 
     return (
@@ -45,10 +48,10 @@ const AssignmentSubmit = () => {
                         <label>Quick Note Text</label>
                         <textarea className="border p-2 rounded-md" name="note" id=""></textarea>
                     </div>
-                    <div>
+                    {/* <div>
                         <label>User Email:</label>
                         <input className='border p-2 rounded-md' defaultValue={user?.email} type="text" name="email" required />
-                    </div>
+                    </div> */}
                     <button className='btn btn-active' type="submit">Submit</button>
                 </div>
             </form>

@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import toast from "react-hot-toast";
@@ -9,6 +9,7 @@ import { AuthContext } from "../provider/AuthProvider";
 const AssignmentUpdate = () => {
     const { user } = useContext(AuthContext)
     const loadedAssignment = useLoaderData();
+    const navigate = useNavigate();
     const { title, description, marks, photo, difficultyLevel, date } = loadedAssignment
     const [startDate, setStartDate] = useState(new Date());
 
@@ -36,6 +37,7 @@ const AssignmentUpdate = () => {
                     toast.success('assignment successfully updated')
                 }
             })
+            navigate('/assignments')
     }
 
 

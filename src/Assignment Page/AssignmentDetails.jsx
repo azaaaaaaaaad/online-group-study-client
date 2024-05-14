@@ -16,7 +16,7 @@ const AssignmentDetails = () => {
                     <p>Marks: {marks}</p>
                     <p>Difficulty: {difficultyLevel}</p>
                     <p>Description: {description}</p>
-                    <p>Deadline: {date}</p>
+                    <p>Deadline: {new Date (date).toLocaleDateString()}</p>
                     {
                         user &&
                         <Link to={`/assignment-submit/${_id}`} className="card-actions justify-end">

@@ -24,7 +24,7 @@ const Navbar = () => {
                     )}
                     {user && (
                         <li>
-                            <Link to='/pending-assignment'>Pending Assignments</Link>
+                            <Link to='/pending-assignments'>Pending Assignments</Link>
                         </li>
                     )}
                     {

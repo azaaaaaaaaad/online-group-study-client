@@ -18,8 +18,8 @@ const CreateAssignment = () => {
         const photo = form.photo.value;
         const difficultyLevel = form.difficultyLevel.value;
         const date = startDate
-        const email = form.email.value;
-        const info = { title, description, marks, photo, difficultyLevel, date, email }
+        const creatorEmail = form.creator_email.value;
+        const info = { title, description, marks, photo, difficultyLevel, date, creatorEmail }
         console.log(info);
 
         try {
@@ -67,8 +67,8 @@ const CreateAssignment = () => {
                         <DatePicker className='border p-2 rounded-md' selected={startDate} onChange={(date) => setStartDate(date)} />
                     </div>
                     <div>
-                        <label>User Email:</label>
-                        <input className='border p-2 rounded-md' defaultValue={user?.email} type="text" name="email" required />
+                        <label>Creator Email:</label>
+                        <input className='border p-2 rounded-md' defaultValue={user?.email} type="text" name="creator_email" required />
                     </div>
                     <button className='btn btn-active' type="submit">Submit</button>
                 </div>

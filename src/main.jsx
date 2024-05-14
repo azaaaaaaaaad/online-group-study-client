@@ -19,6 +19,7 @@ import AssignmentDetails from './Assignment Page/AssignmentDetails';
 import AssignmentUpdate from './Assignment Page/AssignmentUpdate';
 import AssignmentSubmit from './Assignment Page/AssignmentSubmit';
 import MyAttemptedAssignments from './My Attempted Assignments/MyAttemptedAssignments';
+import PendingAssignments from './Pending Assignments/PendingAssignments';
 
 const router = createBrowserRouter([
   {
@@ -44,7 +45,9 @@ const router = createBrowserRouter([
       },
       {
         path: '/assignments-update/:id',
-        element: <AssignmentUpdate></AssignmentUpdate>,
+        element: <PrivateRoute>
+          <AssignmentUpdate></AssignmentUpdate>
+        </PrivateRoute>,
         loader: ({ params }) => fetch(`https://group-study-server-henna.vercel.app/assignments/${params.id}`),
       },
       {
@@ -72,7 +75,19 @@ const router = createBrowserRouter([
         element: <PrivateRoute>
           <MyAttemptedAssignments></MyAttemptedAssignments>
         </PrivateRoute>,
-      }
+      },
+      {
+        path: '/my-attempted-assignments',
+        element: <PrivateRoute>
+          <MyAttemptedAssignments></MyAttemptedAssignments>
+        </PrivateRoute>,
+      },
+      {
+        path: '/pending-assignments',
+        element: <PrivateRoute>
+          <PendingAssignments></PendingAssignments>
+        </PrivateRoute>,
+      },
     ]
   },
 ]);
