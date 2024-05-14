@@ -20,6 +20,7 @@ import AssignmentUpdate from './Assignment Page/AssignmentUpdate';
 import AssignmentSubmit from './Assignment Page/AssignmentSubmit';
 import MyAttemptedAssignments from './My Attempted Assignments/MyAttemptedAssignments';
 import PendingAssignments from './Pending Assignments/PendingAssignments';
+import MarksDistribution from './Pending Assignments/MarksDistribution';
 
 const router = createBrowserRouter([
   {
@@ -86,6 +87,12 @@ const router = createBrowserRouter([
         path: '/pending-assignments',
         element: <PrivateRoute>
           <PendingAssignments></PendingAssignments>
+        </PrivateRoute>,
+      },
+      {
+        path: '/marks-distribution/:id',
+        element: <PrivateRoute>
+          <MarksDistribution></MarksDistribution>
         </PrivateRoute>,
       },
     ]

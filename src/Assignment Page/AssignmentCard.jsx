@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 
 
 const AssignmentCard = ({ assignment }) => {
-    const {user} = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
     const { _id, title, creatorEmail, marks, photo, difficultyLevel, date } = assignment;
     const navigate = useNavigate();
 
@@ -41,36 +41,38 @@ const AssignmentCard = ({ assignment }) => {
                         });
                 }
             });
-        } else{
+        } else {
             Swal.fire({
                 position: "center",
                 icon: "error",
                 title: "You cannot delete this assignment",
                 showConfirmButton: false,
                 timer: 1500
-              });
+            });
         }
         // navigate('/')
     };
     return (
-        <div className="card w-96 bg-base-100 shadow-xl">
-            <figure className="px-10 pt-10">
-                <img src={photo} alt="Shoes" className="rounded-xl" />
-            </figure>
-            <div className="card-body items-center text-center">
-                <h2 className="card-title">{title}</h2>
-                <p>Marks: {marks}</p>
-                <p>Difficulty: {difficultyLevel}</p>
-                <p>Date: {new Date(date).toLocaleDateString()}</p>
-                <div className="card-actions">
-                    <div className="join">
-                        <Link to={`/assignments/${_id}`}><button className="btn join-item">View</button></Link>
-                        <Link to={`/assignments-update/${_id}`}>
-                            <button className="btn join-item">Update</button>
-                        </Link>
-                        {
-                            user && <button onClick={() => handleDelete(_id)} className="btn join-item">Delete</button>
-                        }
+        <div>
+            <div className="card w-96 bg-base-100 shadow-xl">
+                <figure className="px-10 pt-10">
+                    <img src={photo} alt="Shoes" className="rounded-xl" />
+                </figure>
+                <div className="card-body items-center text-center">
+                    <h2 className="card-title">{title}</h2>
+                    <p>Marks: {marks}</p>
+                    <p>Difficulty: {difficultyLevel}</p>
+                    <p>Date: {new Date(date).toLocaleDateString()}</p>
+                    <div className="card-actions">
+                        <div className="join">
+                            <Link to={`/assignments/${_id}`}><button className="btn join-item">View</button></Link>
+                            <Link to={`/assignments-update/${_id}`}>
+                                <button className="btn join-item">Update</button>
+                            </Link>
+                            {
+                                user && <button onClick={() => handleDelete(_id)} className="btn join-item">Delete</button>
+                            }
+                        </div>
                     </div>
                 </div>
             </div>

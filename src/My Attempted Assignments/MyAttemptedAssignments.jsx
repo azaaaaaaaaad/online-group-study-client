@@ -11,7 +11,7 @@ const MyAttemptedAssignments = () => {
 
     useEffect(() => {
         const getData = async () => {
-            const { data } = await axios(`http://localhost:5000/assignments-submission/${user?.email}`)
+            const { data } = await axios(`https://group-study-server-henna.vercel.app/assignments-submission/${user?.email}`)
             setSubmissions(data)
         }
         getData()
@@ -23,7 +23,7 @@ const MyAttemptedAssignments = () => {
         <section className='container px-4 mx-auto pt-12'>
                 <div className="flex items-center justify-center gap-8">
                     <h2 className='text-2xl text-center font-bold'>My Attempted Assignments</h2>
-                    <span className='px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full '>
+                    <span className='px-3 py-1 text-xs text-blue-600 bg-blue-200 rounded-full '>
                         {submissions.length} Assignment
                     </span>
                 </div>
@@ -35,7 +35,7 @@ const MyAttemptedAssignments = () => {
                     <div className='inline-block min-w-full py-2 align-middle md:px-6 lg:px-8'>
                         <div className='overflow-hidden border border-black  md:rounded-lg'>
                             <table className='min-w-full divide-y divide-gray-200 '>
-                                <thead className='bg-blue-100 '>
+                                <thead className='bg-blue-200 '>
                                     <tr>
                                         <th
                                             scope='col'
@@ -83,10 +83,10 @@ const MyAttemptedAssignments = () => {
                                                 {submission.status}
                                             </td>
                                             <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
-                                                100
+                                                {submission.assignmentMarks}
                                             </td>
                                             <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
-                                                --
+                                                {submission.obtainedMarks}
                                             </td>
 
                                             {/* <td className='px-4 py-4 text-sm whitespace-nowrap'>

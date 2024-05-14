@@ -12,6 +12,7 @@ const CreateAssignment = () => {
     const handleForm = async e => {
         e.preventDefault()
         const form = e.target;
+        const name = user.displayName;
         const title = form.title.value;
         const description = form.description.value;
         const marks = form.marks.value;
@@ -19,7 +20,7 @@ const CreateAssignment = () => {
         const difficultyLevel = form.difficultyLevel.value;
         const date = startDate
         const creatorEmail = form.creator_email.value;
-        const info = { title, description, marks, photo, difficultyLevel, date, creatorEmail }
+        const info = { name, title, description, marks, photo, difficultyLevel, date, creatorEmail }
         console.log(info);
 
         try {
@@ -38,6 +39,10 @@ const CreateAssignment = () => {
             <h2 className="text-center font-bold text-2xl mb-6">Create Assignments</h2>
             <form onSubmit={handleForm}>
                 <div className='text-center space-y-8'>
+                    {/* <div>
+                        <label>Name:</label>
+                        <input defaultValue={user.displayName} className='border p-2 rounded-md' type="text" name="title" required />
+                    </div> */}
                     <div>
                         <label>Title:</label>
                         <input className='border p-2 rounded-md' type="text" name="title" required />

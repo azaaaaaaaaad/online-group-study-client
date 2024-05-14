@@ -9,18 +9,20 @@ const AssignmentSubmit = () => {
     const { user } = useContext(AuthContext)
     const navigate = useNavigate()
     const assignment = useLoaderData();
-    const { _id, title } = assignment;
+    const { _id, title, marks } = assignment;
 
     const handleForm = async e => {
         e.preventDefault()
         const form = e.target;
         const assignmentId = _id;
         const assignmentTitle = title
+        const name = user.displayName;
+        const assignmentMarks = marks
         const link = form.link.value;
         const note = form.note.value;
         const email = user.email;
         const status = 'pending'
-        const info = { assignmentId, assignmentTitle, link, note, email, status }
+        const info = { assignmentId, assignmentTitle, name, assignmentMarks, link, note, email, status }
         console.log(info);
 
         try {
