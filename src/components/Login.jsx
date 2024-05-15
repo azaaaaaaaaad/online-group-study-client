@@ -16,7 +16,7 @@ const Login = () => {
         try {
             const result = await signInWithGoogle()
             console.log(result.user);
-            const { data } = await axios.post(`http://localhost:5000/jwt`, {
+            const { data } = await axios.post(`https://group-study-server-henna.vercel.app/jwt`, {
                 email: result?.user?.email,
             },
             { withCredentials: true})
@@ -40,7 +40,7 @@ const Login = () => {
         try {
             const result = await signIn(email, password)
             console.log(result.user);
-            const { data } = await axios.post(`http://localhost:5000/jwt`, {
+            const { data } = await axios.post(`https://group-study-server-henna.vercel.app/jwt`, {
                 email: result?.user?.email,
             },
             { withCredentials: true})

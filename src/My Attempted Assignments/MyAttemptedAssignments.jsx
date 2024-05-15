@@ -10,12 +10,14 @@ const MyAttemptedAssignments = () => {
     const [submissions, setSubmissions] = useState([])
 
     useEffect(() => {
-        const getData = async () => {
-            const { data } = await axios(`https://group-study-server-henna.vercel.app/assignments-submission/${user?.email}`)
-            setSubmissions(data)
-        }
         getData()
     }, [user])
+
+    const getData = async () => {
+        const { data } = await axios(`https://group-study-server-henna.vercel.app/assignments-submission/${user?.email}`,
+        {withCredentials: true})
+        setSubmissions(data)
+    }
 
     console.log(submissions);
 

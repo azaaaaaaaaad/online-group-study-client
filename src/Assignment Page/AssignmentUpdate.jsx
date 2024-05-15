@@ -25,7 +25,8 @@ const AssignmentUpdate = () => {
         const email = form.email.value;
         const info = { title, description, marks, photo, difficultyLevel, date, email }
 
-        fetch(`https://group-study-server-henna.vercel.app/assignments/${loadedAssignment._id}`, {
+        fetch(`https://group-study-server-henna.vercel.app/assignments/${loadedAssignment._id}`,
+        {credentials: "include"}, {
             method: "PUT",
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(info)

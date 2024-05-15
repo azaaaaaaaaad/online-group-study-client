@@ -41,8 +41,7 @@ const router = createBrowserRouter([
         element: <PrivateRoute>
           <AssignmentDetails></AssignmentDetails>
         </PrivateRoute>,
-        loader: ({ params }) => fetch(`https://group-study-server-henna.vercel.app/assignments/${params.id}`)
-
+        loader: ({ params }) => fetch(`https://group-study-server-henna.vercel.app/assignments/${params.id}`),
       },
       {
         path: '/assignments-update/:id',

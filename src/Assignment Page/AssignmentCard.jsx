@@ -23,7 +23,8 @@ const AssignmentCard = ({ assignment, assignments, setAssignments }) => {
                 confirmButtonText: 'Yes, delete it!'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    fetch(`https://group-study-server-henna.vercel.app/assignments/${id}`, {
+                    fetch(`https://group-study-server-henna.vercel.app/assignments/${id}`,
+                    {credentials: 'include'}, {
                         method: 'DELETE'
                     })
                         .then(res => res.json())

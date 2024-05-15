@@ -38,7 +38,7 @@ const AuthProvider = ({ children }) => {
 
   const logOut = async () => {
     setLoading(true)
-    const {data} = await axios('http://localhost:5000/logout',{
+    const {data} = await axios('https://group-study-server-henna.vercel.app/logout',{
       withCredentials: true
     })
     console.log(data);
