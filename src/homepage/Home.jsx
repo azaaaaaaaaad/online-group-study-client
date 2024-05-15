@@ -5,7 +5,6 @@ import FAQ from "./FAQ";
 
 const Home = () => {
     const features = useLoaderData();
-    console.log(features);
     return (
         <div>
             <Banner></Banner>

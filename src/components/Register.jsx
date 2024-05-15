@@ -3,6 +3,7 @@ import image from '../assets/images/logo.png'
 import { useContext } from "react"
 import { AuthContext } from "../provider/AuthProvider"
 import toast from "react-hot-toast"
+import axios from "axios"
 
 const Register = () => {
   const navigate = useNavigate()
@@ -12,7 +13,12 @@ const Register = () => {
   //google sign in
   const handleGoogleSignin = async () => {
     try {
-      await signInWithGoogle()
+      const result = await signInWithGoogle()
+      const { data } = await axios.post(`http://localhost:5000/jwt`, {
+        email: result?.user?.email,
+      },
+        { withCredentials: true })
+      console.log(data);
       toast.success('sign in successful')
       navigate('/')
     } catch (error) {
@@ -31,19 +37,24 @@ const Register = () => {
     const pass = form.password.value
     console.log({ email, pass, name, photo })
 
-     // Regex pattern for password validation
-     const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/;
+    // Regex pattern for password validation
+    const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/;
 
-     if (!passwordPattern.test(pass)) {
-         toast.error('Password must contain at least one uppercase letter, one lowercase letter, one digit, and be at least 6 characters long.');
-         return;
-     }
+    if (!passwordPattern.test(pass)) {
+      toast.error('Password must contain at least one uppercase letter, one lowercase letter, one digit, and be at least 6 characters long.');
+      return;
+    }
 
     try {
       const result = await createUser(email, pass)
-      console.log(result)
       await updateUserProfile(name, photo)
-      setUser({ ...user, photoURL: photo, displayName: name })
+      setUser({ ...result?.user, photoURL: photo, displayName: name })
+
+      const { data } = await axios.post(`http://localhost:5000/jwt`, {
+        email: result?.user?.email,
+      },
+        { withCredentials: true })
+      console.log(data);
       navigate('/')
       toast.success('sign up successful')
     } catch (error) {
