@@ -1,12 +1,13 @@
 
 
-
 const MarksDistribution = () => {
+
+
     
     return (
         <div>
             <h2 className="text-center font-bold text-2xl mb-6">Marks Distribution</h2>
-            <form >
+            <form>
                 <div className='text-center space-y-8'>
                     <div>
                         <label>Doc Link:</label>
