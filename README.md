@@ -28,5 +28,22 @@
 To clone and run this project locally, follow these steps:
 
 1. **Clone the repository**:
-   ```bash
    git clone https://github.com/azaaaaaaaaad/online-group-study-client.git
+
+2. **Clone the repository**:
+   Navigate to project directory: cd Group-Study
+   
+3. **Install dependencies**:
+   npm install
+   
+4. **Set up environment variables**:
+   Create a .env file with necessary configurations (database URI, API keys, etc.).
+   
+5. **Start the server**:
+   nodemon index.js
+
+6. **Open the app in your browser.**:
+   Visit http://localhost:5000
+
+
+
