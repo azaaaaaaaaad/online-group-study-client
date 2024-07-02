@@ -30,8 +30,8 @@ To clone and run this project locally, follow these steps:
 - **Clone the repository**:
    git clone https://github.com/azaaaaaaaaad/online-group-study-client.git
 
-- **Clone the repository**:
-   Navigate to project directory: cd Group-Study
+- **Navigate to project directory**:
+    cd Group-Study
    
 - **Install dependencies**:
    npm install
