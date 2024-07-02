@@ -4,7 +4,7 @@ This is the README file for the Group-Study Website project.
 
 ## Live Site
 
-Visit the live site at [https://online-group-study-5cb94.web.app/](https://online-group-study-5cb94.web.app/)
+Visit the live site at [Online Group Study](https://online-group-study-5cb94.web.app/)
 
 ## Features and Characteristics
 
