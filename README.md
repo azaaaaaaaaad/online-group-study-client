@@ -5,23 +5,23 @@
 
 - **Project Concept**: Group-Study is an online platform designed to facilitate collaborative learning among students. It aims to solve the problem of isolation in remote learning environments by providing a virtual space where users can engage in group study sessions.
   
-- **Problem it Solves**: It enables users to connect, share resources, and collaborate in real-time, fostering a conducive learning environment.
+- **Problem it Solves**: It enables users to connect, share resources, and collaborate in real-time.
 
 ## Features
 
-- ** Collaboration**: Users can join and create assignments, assignment mark will be given by the user who created the assignment. Any users can do or create the assignment.
+- **Collaboration**: Users can join and create/do the assignments, assignment mark will be given by the user who created the assignment.
   
-- **User Authentication and Profiles**: Secure user authentication ensures only authorized individuals access the platform. User profiles personalize the experience, storing study preferences and session history.
+- **User Authentication and Profiles**: Secure user authentication ensures only authorized individuals access the platform.
   
-- **Responsive Design**: The website adapts seamlessly to various devices and screen sizes, ensuring a consistent user experience whether on desktop or mobile.
+- **Responsive Design**: The website adapts seamlessly to various devices and screen sizes.
 
 ## Technology Used
 
-- **Frontend**: HTML, CSS, JavaScript (React.js for dynamic UI)
+- **Frontend**: React.js
   
-- **Backend**: Node.js with Express.js (RESTful API)
+- **Backend**: Node.js with Express.js
   
-- **Database**: MongoDB for storing user profiles, group data, and session logs.
+- **Database**: MongoDB.
 
 ## Cloning and Running Locally
 
