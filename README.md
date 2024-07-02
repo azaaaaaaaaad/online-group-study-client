@@ -3,7 +3,7 @@
 
 ## Project Overview
 
-- **Project Concept**: Group-Study is an online platform designed to facilitate collaborative learning among students and professionals. It aims to solve the problem of isolation in remote learning environments by providing a virtual space where users can engage in group study sessions regardless of their physical location.
+- **Project Concept**: Group-Study is an online platform designed to facilitate collaborative learning among students. It aims to solve the problem of isolation in remote learning environments by providing a virtual space where users can engage in group study sessions.
   
 - **Problem it Solves**: It enables users to connect, share resources, and collaborate in real-time, fostering a conducive learning environment.
 
